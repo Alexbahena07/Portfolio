@@ -736,8 +736,8 @@ button.stroke.large, .button.stroke.large {
 	line-height: 5.4rem !important;
 }
 button.stroke:hover, .button.stroke:hover {
-	border: 3px solid #faebd7;
-	color: #faebd7;
+	border: 3px solid #003B73;
+	color: #003B73;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
 	border: 0;
@@ -2187,7 +2187,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #stats {
-	background: #deb887;
+	background: #B59F84;
 	padding-top: 7.2rem;
 	padding-bottom: 6rem;
 	text-align: center;
@@ -2366,7 +2366,7 @@ header .logo a {
 	padding: 0 3rem;
 	margin-top: 4.8rem;
 	width: 100%;
-	background: #faebd7;
+	background: #B59F84;
 	color: #FFFFFF;
 }
 #contact button.submitform:hover, #contact button.submitform:focus {
