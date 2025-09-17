@@ -2632,6 +2632,9 @@ footer .copyright span::after {
 footer .copyright span:last-child::after {
 	display: none;
 }
+footer {
+  background: #151515;
+}
 
 /**
  * responsive:
