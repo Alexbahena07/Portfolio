@@ -1727,18 +1727,7 @@ header .logo a {
   margin: 0 0 .6rem; 
 }
 
-#resume .timeline-wrap .timeline-block:nth-child(even),
-#resume .timeline-wrap .timeline-block:nth-child(even) .timeline-header,
-#resume .timeline-wrap .timeline-block:nth-child(even) .timeline-content {
-  float: none !important;
-  text-align: left !important;
-  margin-top: 0 !important;
-}
 
-@media (min-width: 1025px) {
-  #resume .timeline-header { width: 36%; padding-right: 80px; }
-  #resume .timeline-content { margin-left: 36%; padding-left: 50px; }
-}
 
 
 /**
@@ -1817,7 +1806,6 @@ header .logo a {
 	}
 }
 
-
 /* --- Uniform, grid-based layout for resume (desktop) --- */
 @media (min-width: 769px) {
 
@@ -1886,6 +1874,10 @@ header .logo a {
 @media (max-width: 768px) {
   #resume .timeline-block + .timeline-block { margin-top: 2.4rem; }
 }
+@media (min-width: 769px) {
+  #resume .timeline-ico i { left: 0; top: 0; }
+}
+
 
 
 /** 
@@ -2702,34 +2694,3 @@ footer .copyright span:last-child::after {
 }
 
 /*# sourceMappingURL=main.css.map */
-
-/* === Uniform spacing for the resume timeline === */
-:root { --resume-gap: 3.2rem; }             /* tweak this to taste */
-
-#resume .timeline-block {
-  display: flow-root;                        /* contain floats & stop margin-collapsing */
-  margin: 0;                                 /* reset any theme margins */
-  padding: 0;
-}
-
-/* Give the same gap between every pair of items */
-#resume .timeline-block + .timeline-block {
-  margin-top: var(--resume-gap) !important;
-}
-
-/* Kill any “stagger” rules from the theme on even/odd items */
-#resume .timeline-wrap .timeline-block:nth-child(even),
-#resume .timeline-wrap .timeline-block:nth-child(odd) {
-  margin-top: 0 !important;
-}
-
-/* Normalize inner spacing so extra <p> tags don't change block gaps */
-#resume .timeline-header h3 { margin: 0 0 .25rem; line-height: 1.25; }
-#resume .timeline-header p  { margin: 0; }
-#resume .timeline-content > * { margin: 0 0 .6rem; }
-#resume .timeline-content > *:last-child { margin-bottom: 0; }
-
-/* Optional: smaller gaps on mobile */
-@media (max-width: 768px) {
-  :root { --resume-gap: 2.4rem; }
-}
