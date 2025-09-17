@@ -524,7 +524,6 @@ select {
 	padding: 1.5rem 0;
 	border: 0;
 	outline: none;
-	vertical-align: middle;
 	color: #313131;
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.5rem;
@@ -1816,6 +1815,76 @@ header .logo a {
 	#resume .timeline-header, #resume .timeline-content {
 		padding-left: 5.5rem;
 	}
+}
+
+
+/* --- Uniform, grid-based layout for resume (desktop) --- */
+@media (min-width: 769px) {
+
+  /* Vertical line through the icon centers */
+  #resume .timeline-wrap { position: relative; }
+  #resume .timeline-wrap::before {
+    content: "";
+    position: absolute;
+    /* 35% = left column; +2.4rem = half of 4.8rem icon width */
+    left: calc(35% + 2.4rem);
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
+  }
+
+  /* Each item is a 3-column grid: [left text] [icon] [right text] */
+  #resume .timeline-block {
+    display: grid;
+    grid-template-columns: 35% 4.8rem 1fr;
+    column-gap: 6rem;                /* horizontal spacing on BOTH sides of the icon */
+    align-items: start;              /* align all three to the same top line */
+    margin: 0;                       /* reset theme spacing */
+    padding-top: 1.5rem;             /* keep breathing room for the icon */
+  }
+  /* uniform vertical gap between items */
+  #resume .timeline-block + .timeline-block { margin-top: 3.2rem; }
+
+  /* Left column */
+  #resume .timeline-header {
+    grid-column: 1;
+    grid-row: 1;
+    float: none;                     /* kill legacy floats */
+    width: auto;                     /* ignore legacy 35% width */
+    padding-right: 0;
+    text-align: right;
+  }
+  #resume .timeline-header h3 { margin: 0 0 .25rem; line-height: 1.25; }
+  #resume .timeline-header p  { margin: 0; }
+
+  /* Icon column */
+  #resume .timeline-ico {
+    grid-column: 2;
+    grid-row: 1;
+    position: static;                /* no absolute positioning */
+    margin: 0;
+    display: flex;                   /* perfect centering inside its 4.8rem cell */
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Right column */
+  #resume .timeline-content {
+    grid-column: 3;
+    grid-row: 1;
+    float: none;
+    margin: 0;
+    padding-left: 0;
+    text-align: left;
+  }
+  #resume .timeline-content > * { margin: 0 0 .6rem; }
+  #resume .timeline-content > *:last-child { margin-bottom: 0; }
+}
+
+/* (Optional) smaller vertical gaps on tablet/phone, keep your existing mobile rules */
+@media (max-width: 768px) {
+  #resume .timeline-block + .timeline-block { margin-top: 2.4rem; }
 }
 
 
