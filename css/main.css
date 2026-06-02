@@ -48,6 +48,7 @@
  */
 html {
 	font-size: 10px;
+	background: #151515;
 }
 
 @media only screen and (max-width:1024px) {
@@ -67,7 +68,7 @@ html {
 }
 
 html, body {
-	height: 100%;
+	min-height: 100%;
 }
 body {
 	background: #151515;
@@ -1098,7 +1099,7 @@ header .top-bar {
 	min-width: 220px;
 	min-height: 66px;
 	position: absolute;
-	left: 90px;
+	left: 0;
 	top: 0;
 }
 header .logo {
@@ -1266,22 +1267,22 @@ header .logo a {
  */
 @media only screen and (max-width:1024px) {
 	header .top-bar {
-		left: 60px;
+		left: 0;
 	}
 }
 @media only screen and (max-width:768px) {
 	header .top-bar {
-		left: 50px;
+		left: 0;
 	}
 }
 @media only screen and (max-width:600px) {
 	header .top-bar {
-		left: 35px;
+		left: 0;
 	}
 }
 @media only screen and (max-width:400px) {
 	header .top-bar {
-		left: 25px;
+		left: 0;
 	}
 }
 
