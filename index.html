@@ -7,9 +7,21 @@
    <!--- basic page needs
    ================================================== -->
    <meta charset="utf-8">
-	<title>Home</title>
-	<meta name="description" content="">  
-	<meta name="Alex Bahena" content="">
+	<title>Alex Bahena — Full-Stack Software Engineer</title>
+	<meta name="description" content="Alex Bahena is a Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan, building scalable web applications with React, Next.js, TypeScript, and PostgreSQL.">
+	<meta name="author" content="Alex Bahena">
+
+	<!-- open graph / link previews
+   ================================================== -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Alex Bahena — Full-Stack Software Engineer">
+	<meta property="og:description" content="Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan, building scalable web applications with React, Next.js, TypeScript, and PostgreSQL.">
+	<meta property="og:image" content="images/Headshot2026.png">
+	<meta property="og:url" content="https://alexbahena07.github.io/Portfolio/">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Alex Bahena — Full-Stack Software Engineer">
+	<meta name="twitter:description" content="Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan.">
+	<meta name="twitter:image" content="images/Headshot2026.png">
 
    <!-- mobile specific metas
    ================================================== -->
@@ -48,7 +60,7 @@
 						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
 						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
 						<li><a class="smoothscroll"  href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll"  href="#services" title="">Services</a></li>	
+						<li><a class="smoothscroll"  href="#services" title="">Strengths</a></li>
 						<li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>				
 					</ul>
 				</nav>    		
@@ -68,25 +80,32 @@
 
    			<div class="col-twelve">
 
-	   			<h5>Hello, World.</h5>
+	   			<h5 class="intro-eyebrow">Hello, World.</h5>
 	   			<h1>I'm Alex Bahena</h1>
 
-	   			<p class="intro-position">
-	   				<span>Full-Stack Developer</span>
-	   				<span>React · TypeScript · Node.js · Chicago</span>
-	   			</p>
+	   			<div class="intro-position">
+	   				<span class="intro-pill intro-pill-primary">Full-Stack Developer</span>
+	   				<span class="intro-pill">React</span>
+	   				<span class="intro-pill">TypeScript</span>
+	   				<span class="intro-pill">Node.js</span>
+	   				<span class="intro-pill">Chicago</span>
+	   			</div>
 
 	   			<a class="button stroke smoothscroll" href="#about" title="">About Me</a>
 
-	   		</div>  
-   			
-   		</div>   		 		
-   	</div> <!-- /intro-content --> 
+	   		</div>
 
-   	<ul class="intro-social">        
+   		</div>
+   	</div> <!-- /intro-content -->
+
+   	<ul class="intro-social">
          <li><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
          <li><a href="https://github.com/Alexbahena07" target="_blank"><i class="fa fa-github"></i></a></li>
-      </ul> <!-- /intro-social -->      	
+      </ul> <!-- /intro-social -->
+
+      <a class="intro-scroll-cue smoothscroll" href="#about" title="Scroll to About" aria-label="Scroll to About">
+         <i class="fa fa-angle-down"></i>
+      </a>
 
    </section> <!-- /intro -->
 
@@ -101,10 +120,17 @@
             <h1>Let me introduce myself.</h1>
 
             <div class="intro-info">
-                <p class="lead">
-                    I'm Alex Bahena, I have a passion for full-stack web development and a strong foundation in software engineering, security, and human-centered design. My experience spans collaborative web projects, data analytics, and cloud-based tools.
-                </p>
-            </div>   			
+                <img src="images/Headshot2026.png" alt="Alex Bahena">
+                <div class="intro-text">
+                    <p class="lead">
+                        Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan. Experienced building scalable web applications using React, Next.js, TypeScript, Python, and SQL with strengths in REST API development, database design, and Git-based workflows.
+                    </p>
+                    <div class="intro-badges">
+                        <span class="intro-badge"><i class="fa fa-graduation-cap"></i> B.S. Computer Science, University of Michigan</span>
+                        <span class="intro-badge"><i class="fa fa-map-marker"></i> Chicago, IL</span>
+                    </div>
+                </div>
+            </div>
 
         </div>   		
     </div> <!-- /section-intro -->
@@ -118,27 +144,27 @@
 
             <ul class="info-list">
                 <li>
-                    <strong>Fullname:</strong>
+                    <strong><i class="fa fa-user info-icon"></i>Fullname:</strong>
                     <span>Alex Bahena</span>
                 </li>
                 <li>
-                    <strong>Location:</strong>
-                    <span>Alsip, Illinois 60803</span>
+                    <strong><i class="fa fa-map-marker info-icon"></i>Location:</strong>
+                    <span>Alsip, Illinois</span>
                 </li>
                 <li>
-                    <strong>Email:</strong>
+                    <strong><i class="fa fa-envelope info-icon"></i>Email:</strong>
                     <span>alex.bahena.cs@gmail.com</span>
                 </li>
                 <li>
-                    <strong>Website:</strong>
+                    <strong><i class="fa fa-globe info-icon"></i>Website:</strong>
                     <span><a href="https://alexbahena07.github.io/Portfolio/" target="_blank">Portfolio</a></span>
                 </li>
                 <li>
-                    <strong>LinkedIn:</strong>
-                    <span><a href="https://linkedin.com/in/alexbahena" target="_blank">linkedin.com/in/alexbahena</a></span>
+                    <strong><i class="fa fa-linkedin-square info-icon"></i>LinkedIn:</strong>
+                    <span><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank">linkedin.com/in/alex-bahena-619010177</a></span>
                 </li>
                 <li>
-                    <strong>GitHub:</strong>
+                    <strong><i class="fa fa-github info-icon"></i>GitHub:</strong>
                     <span><a href="https://github.com/Alexbahena07" target="_blank">github.com/Alexbahena07</a></span>
                 </li>
             </ul> <!-- /info-list -->
@@ -147,14 +173,58 @@
 
         <div class="col-six tab-full">
 
-            <h3>Skills</h3>
-            <p>Tech-savvy and detail-oriented with a strong commitment to continuous learning and team collaboration.</p>
+            <h3>Technical Skills</h3>
 
-            <ul class="skill-bars">
-                <li><strong>Languages:</strong> TypeScript, JavaScript, Python, C++, HTML, CSS</li>
-                <li><strong>Frameworks & Libraries:</strong> React, Next.js, Node.js, Tailwind CSS, Prisma</li>
-                <li><strong>Tools & Platforms:</strong> PostgreSQL, AWS, Vercel, GitHub, REST APIs, VS Code</li>
-            </ul> <!-- /skill-bars -->		
+            <div class="skill-groups">
+                <div class="skill-group">
+                    <h4><i class="fa fa-terminal"></i> Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4><i class="fa fa-cubes"></i> Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4><i class="fa fa-database"></i> Databases</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4><i class="fa fa-globe"></i> Web</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4><i class="fa fa-wrench"></i> Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Prisma</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4><i class="fa fa-lightbulb-o"></i> Concepts</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Full-Stack Development</span>
+                    </div>
+                </div>
+            </div> <!-- /skill-groups -->
 
         </div>
 
@@ -162,8 +232,8 @@
 
     <div class="row button-section">
         <div class="col-twelve">
-            <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-            <a href="Alex_Bahena_Resume.pdf" title="Download Resume" class="button button-primary" target="_blank">Download Resume</a>
+            <a href="#contact" title="Hire Me" class="button stroke smoothscroll"><i class="fa fa-paper-plane"></i> Hire Me</a>
+            <a href="Alex_Bahena_Resume.pdf" title="Download Resume" class="button button-primary" target="_blank"><i class="fa fa-download"></i> Download Resume</a>
         </div>   		
     </div>
 
@@ -178,7 +248,6 @@
         <div class="col-twelve">
             <h5>Resume</h5>
             <h1>More of my credentials.</h1>
-            <p class="lead">Experience</p>
         </div>   		
     </div> <!-- /section-intro--> 
 
@@ -191,19 +260,19 @@
 
         <div class="col-twelve">
             <div class="timeline-wrap">
-				<!-- COLLAB Connects -->
+				<!-- COLAB Connects -->
 					<div class="timeline-block">
 						<div class="timeline-ico">
 							<i class="fa fa-briefcase"></i>
 						</div>
 
 						<div class="timeline-header">
-							<h3>COLAB Connects, Software Developer Intern</h3>
+							<h3>COLAB Connects, Full-Stack Software Engineer</h3>
 							<p>August 2025 - Present</p>
 						</div>
 
 						<div class="timeline-content">
-							<p>Built and deployed a full-stack talent-matching platform at colabconnects.app using Next.js, TypeScript, Prisma, and PostgreSQL, serving recruiter dashboards and candidate discovery with automated email digest notifications via a cron job pipeline.</p>
+							<p>Developed a full-stack talent-matching platform using React, Next.js, and TypeScript supporting recruiter dashboards and candidate profiles. Implemented RESTful APIs and PostgreSQL database design to enable scalable backend services and secure data retrieval. Built authentication and role-based access control using NextAuth; managed version control using Git and GitHub.</p>
 						</div>
 					</div>
                 
@@ -256,14 +325,28 @@
         </div> <!-- /col-twelve -->
     </div> <!-- /resume-timeline -->
 
-    <!-- Educational Experiences Timeline -->
+    <!-- Education Timeline -->
     <div class="row resume-timeline">
         <div class="col-twelve resume-header">
-            <h2>Educational Experiences</h2>
+            <h2>Education</h2>
         </div> <!-- /resume-header -->
 
         <div class="col-twelve">
             <div class="timeline-wrap">
+
+                <!-- University of Michigan -->
+                <div class="timeline-block">
+                    <div class="timeline-ico">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-header">
+                        <h3>University of Michigan, B.S. Computer Science</h3>
+                        <p>College of Literature, Science, and the Arts (LSA) &nbsp;|&nbsp; Graduated 2025</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Ann Arbor, Michigan.</p>
+                    </div>
+                </div>
 
                 <!-- Michigan Hackers -->
                 <div class="timeline-block">
@@ -334,7 +417,7 @@
                         </p>
                     </div>
                     <div class="timeline-content">
-                        <p>Built a full-stack talent-matching platform using Next.js, TypeScript, Prisma, and PostgreSQL, supporting recruiter dashboards and candidate discovery. Deployed on Vercel with CI/CD workflows integrated through GitHub for continuous delivery.</p>
+                        <p>Designed the data model with Prisma and PostgreSQL and built out the candidate discovery and matching flow end-to-end. Deployed on Vercel with CI/CD workflows integrated through GitHub for continuous delivery. Live in production at colabconnects.app.</p>
                     </div>
                 </div>
 
@@ -376,8 +459,8 @@
         </div> <!-- /col-twelve -->
     </div> <!-- /resume-timeline -->
 
+</section> <!-- /resume -->
 
-	
 	<!-- services Section ================================================== -->
 <section id="services">
 
@@ -385,9 +468,9 @@
 
     <div class="row section-intro">
         <div class="col-twelve">
-            <h5>Services</h5>
-            <h1>How Can I Contribute?</h1>
-            <p class="lead">Innovative solutions from front-end to full stack and beyond.</p>
+            <h5>Strengths</h5>
+            <h1>What I Bring to a Team.</h1>
+            <p class="lead">Core strengths I apply across full-stack projects and teams.</p>
         </div>   		
     </div> <!-- /section-intro -->
 
@@ -476,7 +559,7 @@
 						<textarea name="message"  required placeholder="Message"></textarea>
 					
 					
-						<button class="submitform" type="submit">Submit</button>
+						<button class="submitform" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
 					
 		    	</fieldset>
 			</form>
