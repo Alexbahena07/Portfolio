@@ -1,218 +1,117 @@
-/** 
+/**
  * ===================================================================
- * main js
+ * main js - no dependencies (loaded with `defer`, so the DOM is ready)
  *
- * ------------------------------------------------------------------- 
- */ 
+ * -------------------------------------------------------------------
+ */
 
-(function($) {
+(function () {
 
 	"use strict";
 
 	/*---------------------------------------------------- */
-	/* Preloader
-	------------------------------------------------------ */ 
-   $(window).load(function() {
-
-      // will first fade out the loading animation 
-    	$("#loader").fadeOut("slow", function(){
-
-        // will fade out the whole DIV that covers the website.
-        $("#preloader").delay(300).fadeOut("slow");
-
-      });       
-
-  	})
-
-
-  	/*---------------------------------------------------- */
-  	/* FitText Settings
-  	------------------------------------------------------ */
-  	setTimeout(function() {
-
-   	$('#intro h1').fitText(1, { minFontSize: '42px', maxFontSize: '84px' });
-
-  	}, 100);
-
-
-	/*---------------------------------------------------- */
-	/* FitVids
-	------------------------------------------------------ */ 
-  	$(".fluid-video-wrapper").fitVids();
-
-
-	/*---------------------------------------------------- */
-	/* Owl Carousel
-	------------------------------------------------------ */ 
-	$("#owl-slider").owlCarousel({
-        navigation: false,
-        pagination: true,
-        itemsCustom : [
-	        [0, 1],
-	        [700, 2],
-	        [960, 3]
-	     ],
-        navigationText: false
-    });
-
-
-	/*----------------------------------------------------- */
-	/* Alert Boxes
-  	------------------------------------------------------- */
-	$('.alert-box').on('click', '.close', function() {
-	  $(this).parent().fadeOut(500);
-	});	
-
-
-	/*----------------------------------------------------- */
-	/* Stat Counter
-  	------------------------------------------------------- */
-   var statSection = $("#stats"),
-       stats = $(".stat-count");
-
-   statSection.waypoint({
-
-   	handler: function(direction) {
-
-      	if (direction === "down") {       		
-
-			   stats.each(function () {
-				   var $this = $(this);
-
-				   $({ Counter: 0 }).animate({ Counter: $this.text() }, {
-				   	duration: 4000,
-				   	easing: 'swing',
-				   	step: function (curValue) {
-				      	$this.text(Math.ceil(curValue));
-				    	}
-				  	});
-				});
-
-       	} 
-
-       	// trigger once only
-       	this.destroy();      	
-
-		},
-			
-		offset: "90%"
-	
-	});	
-
-
-	/*---------------------------------------------------- */
-	/*	Masonry
+	/* Light / dark theme toggle
 	------------------------------------------------------ */
-	var containerProjects = $('#folio-wrapper');
+	var root        = document.documentElement,
+		 themeToggle = document.querySelector('.theme-toggle'),
+		 themeColor  = document.querySelector('meta[name="theme-color"]'),
+		 systemDark  = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
-	containerProjects.imagesLoaded( function() {
+	function storedTheme() {
+		try { return localStorage.getItem('theme'); } catch (e) { return null; }
+	}
 
-		containerProjects.masonry( {		  
-		  	itemSelector: '.folio-item',
-		  	resize: true 
+	function applyTheme(theme) {
+		var dark = theme === 'dark';
+		root.setAttribute('data-theme', theme);
+		themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+		themeToggle.setAttribute('aria-pressed', String(dark));
+		if (themeColor) themeColor.setAttribute('content', dark ? '#121212' : '#151515');
+	}
+
+	if (themeToggle) {
+		applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+		themeToggle.addEventListener('click', function () {
+			var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			applyTheme(next);
+			try { localStorage.setItem('theme', next); } catch (e) {}
 		});
 
-	});
+		// follow the OS setting until the visitor picks a theme themselves
+		if (systemDark && systemDark.addEventListener) {
+			systemDark.addEventListener('change', function (e) {
+				var saved = storedTheme();
+				if (saved !== 'light' && saved !== 'dark') applyTheme(e.matches ? 'dark' : 'light');
+			});
+		}
+	}
 
 
-	/*----------------------------------------------------*/
-	/*	Modal Popup
-	------------------------------------------------------*/
-   $('.item-wrap a').magnificPopup({
-
-      type:'inline',
-      fixedContentPos: false,
-      removalDelay: 300,
-      showCloseBtn: false,
-      mainClass: 'mfp-fade'
-
-   });
-
-   $(document).on('click', '.popup-modal-dismiss', function (e) {
-   	e.preventDefault();
-   	$.magnificPopup.close();
-   });
-
-	
 	/*-----------------------------------------------------*/
-  	/* Navigation Menu
-   ------------------------------------------------------ */  
-   var toggleButton = $('.menu-toggle'),
-       nav = $('.main-navigation');
+	/* Navigation Menu
+	------------------------------------------------------ */
+	var menuToggle = document.querySelector('.menu-toggle'),
+		 nav        = document.getElementById('main-navigation');
 
-   // toggle button
-   toggleButton.on('click', function(e) {
+	function setMenu(open) {
+		menuToggle.classList.toggle('is-clicked', open);
+		nav.classList.toggle('is-open', open);
+		menuToggle.setAttribute('aria-expanded', String(open));
+		menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+	}
 
-		e.preventDefault();
-		toggleButton.toggleClass('is-clicked');
-		nav.slideToggle();
+	if (menuToggle && nav) {
+		menuToggle.addEventListener('click', function () {
+			setMenu(!nav.classList.contains('is-open'));
+		});
 
-	});
+		nav.addEventListener('click', function (e) {
+			if (e.target.closest('a')) setMenu(false);
+		});
 
-   // nav items
-  	nav.find('li a').on("click", function() {   
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+				setMenu(false);
+				menuToggle.focus();
+			}
+		});
 
-   	// update the toggle button 		
-   	toggleButton.toggleClass('is-clicked'); 
-   	// fadeout the navigation panel
-   	nav.fadeOut();   		
-   	     
-  	});
-
-
-   /*---------------------------------------------------- */
-  	/* Highlight the current section in the navigation bar
-  	------------------------------------------------------ */
-	var sections = $("section"),
-	navigation_links = $("#main-nav-wrap li a");	
-
-	sections.waypoint( {
-
-       handler: function(direction) {
-
-		   var active_section;
-
-			active_section = $('section#' + this.element.id);
-
-			if (direction === "up") active_section = active_section.prev();
-
-			var active_link = $('#main-nav-wrap a[href="#' + active_section.attr("id") + '"]');			
-
-         navigation_links.parent().removeClass("current");
-			active_link.parent().addClass("current");
-
-		}, 
-
-		offset: '25%'
-	});
+		document.addEventListener('click', function (e) {
+			if (nav.classList.contains('is-open') && !e.target.closest('.top-bar')) setMenu(false);
+		});
+	}
 
 
 	/*---------------------------------------------------- */
-  	/* Smooth Scrolling
-  	------------------------------------------------------ */
-  	$('.smoothscroll').on('click', function (e) {
-	 	
-	 	e.preventDefault();
+	/* Highlight the current section in the navigation bar
+	------------------------------------------------------ */
+	var navLinks = document.querySelectorAll('#main-navigation a');
 
-   	var target = this.hash,
-    	$target = $(target);
+	if ('IntersectionObserver' in window && navLinks.length) {
+		var observer = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) return;
+				navLinks.forEach(function (link) {
+					link.parentElement.classList.toggle('current', link.getAttribute('href') === '#' + entry.target.id);
+				});
+			});
+		}, { rootMargin: '-40% 0px -55% 0px' });
 
-    	$('html, body').stop().animate({
-       	'scrollTop': $target.offset().top
-      }, 800, 'swing', function () {
-      	window.location.hash = target;
-      });
-
-  	});  
-  
-
-   /*---------------------------------------------------- */
-	/*  Placeholder Plugin Settings
-	------------------------------------------------------ */ 
-	$('input, textarea, select').placeholder()  
+		document.querySelectorAll('main section[id]').forEach(function (section) {
+			observer.observe(section);
+		});
+	}
 
 
-  	/*---------------------------------------------------- */
+	/*---------------------------------------------------- */
+	/* Footer year
+	------------------------------------------------------ */
+	var year = document.getElementById('year');
+	if (year) year.textContent = new Date().getFullYear();
+
+
+	/*---------------------------------------------------- */
 	/*	contact form
 	------------------------------------------------------ */
 
@@ -223,20 +122,30 @@
 	if (contactForm && window.fetch) {
 
 		var submitBtn = contactForm.querySelector('button[type="submit"]'),
-			 sLoader   = $('#submit-loader'),
-			 sWarning  = $('#message-warning'),
-			 sSuccess  = $('#message-success'),
+			 sLoader   = document.getElementById('submit-loader'),
+			 sWarning  = document.getElementById('message-warning'),
+			 sSuccess  = document.getElementById('message-success'),
 			 ajaxUrl   = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+		function show(el) { el.style.display = 'block'; }
+		function hide(el) { el.style.display = 'none'; }
+
+		function showSuccess() {
+			hide(contactForm);
+			show(sSuccess);
+			sSuccess.focus();
+		}
 
 		function showError(text) {
 			// textContent, never innerHTML, so server/user text can't inject markup
-			sWarning.text(text).fadeIn();
+			sWarning.textContent = text;
+			show(sWarning);
 		}
 
-		contactForm.addEventListener('submit', async function(e) {
+		contactForm.addEventListener('submit', async function (e) {
 
 			e.preventDefault();
-			sWarning.hide();
+			hide(sWarning);
 
 			if (!contactForm.checkValidity()) {
 				contactForm.reportValidity();
@@ -247,8 +156,7 @@
 
 			// honeypot filled in = bot; pretend success and drop it
 			if (data._honey) {
-				$(contactForm).fadeOut();
-				sSuccess.fadeIn();
+				showSuccess();
 				return;
 			}
 
@@ -256,10 +164,10 @@
 			data._replyto = data.email;
 
 			submitBtn.disabled = true;
-			sLoader.fadeIn();
+			show(sLoader);
 
 			var controller = new AbortController(),
-				 timeout    = setTimeout(function() { controller.abort(); }, 15000);
+				 timeout    = setTimeout(function () { controller.abort(); }, 15000);
 
 			try {
 				var res = await fetch(ajaxUrl, {
@@ -272,7 +180,7 @@
 					signal: controller.signal
 				});
 
-				var json = await res.json().catch(function() { return {}; });
+				var json = await res.json().catch(function () { return {}; });
 
 				// FormSubmit returns success as the string "true"
 				if (!res.ok || String(json.success) !== 'true') {
@@ -280,9 +188,7 @@
 				}
 
 				contactForm.reset();
-				$(contactForm).fadeOut(function() {
-					sSuccess.fadeIn(function() { sSuccess.trigger('focus'); });
-				});
+				showSuccess();
 
 			} catch (err) {
 				console.error('Contact form error:', err);
@@ -292,7 +198,7 @@
 
 			} finally {
 				clearTimeout(timeout);
-				sLoader.fadeOut();
+				hide(sLoader);
 				submitBtn.disabled = false;
 			}
 
@@ -300,28 +206,4 @@
 
 	}
 
-
- 	/*----------------------------------------------------- */
-  	/* Back to top
-   ------------------------------------------------------- */ 
-	var pxShow = 300; // height on which the button will show
-	var fadeInTime = 400; // how slow/fast you want the button to show
-	var fadeOutTime = 400; // how slow/fast you want the button to hide
-	var scrollSpeed = 300; // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
-
-   // Show or hide the sticky footer button
-	jQuery(window).scroll(function() {
-
-		if (!( $("#header-search").hasClass('is-visible'))) {
-
-			if (jQuery(window).scrollTop() >= pxShow) {
-				jQuery("#go-top").fadeIn(fadeInTime);
-			} else {
-				jQuery("#go-top").fadeOut(fadeOutTime);
-			}
-
-		}		
-
-	});		
-
-})(jQuery);
+})();

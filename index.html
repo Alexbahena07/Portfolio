@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 
    <!--- basic page needs
@@ -10,77 +8,117 @@
 	<title>Alex Bahena — Full-Stack Software Engineer</title>
 	<meta name="description" content="Alex Bahena is a Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan, building scalable web applications with React, Next.js, TypeScript, and PostgreSQL.">
 	<meta name="author" content="Alex Bahena">
+	<link rel="canonical" href="https://alexbahena07.github.io/Portfolio/">
 
-	<!-- open graph / link previews
+	<!-- open graph / link previews (image URLs must be absolute)
    ================================================== -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Alex Bahena — Full-Stack Software Engineer">
 	<meta property="og:description" content="Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan, building scalable web applications with React, Next.js, TypeScript, and PostgreSQL.">
-	<meta property="og:image" content="images/Headshot2026.png">
 	<meta property="og:url" content="https://alexbahena07.github.io/Portfolio/">
-	<meta name="twitter:card" content="summary">
+	<meta property="og:image" content="https://alexbahena07.github.io/Portfolio/images/og-image.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Alex Bahena, Full-Stack Software Engineer, Chicago">
+	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Alex Bahena — Full-Stack Software Engineer">
 	<meta name="twitter:description" content="Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan.">
-	<meta name="twitter:image" content="images/Headshot2026.png">
+	<meta name="twitter:image" content="https://alexbahena07.github.io/Portfolio/images/og-image.jpg">
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Alex Bahena",
+		"jobTitle": "Full-Stack Software Engineer",
+		"url": "https://alexbahena07.github.io/Portfolio/",
+		"email": "mailto:alex.bahena.cs@gmail.com",
+		"address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL" },
+		"alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Michigan" },
+		"sameAs": [
+			"https://www.linkedin.com/in/alex-bahena-619010177/",
+			"https://github.com/Alexbahena07"
+		]
+	}
+	</script>
 
    <!-- mobile specific metas
    ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#151515">
+
+	<!-- theme: apply the saved / system choice before first paint so there's no flash -->
+	<script>
+		(function () {
+			var theme;
+			try { theme = localStorage.getItem('theme'); } catch (e) {}
+			if (theme !== 'light' && theme !== 'dark') {
+				theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
 
  	<!-- CSS
    ================================================== -->
-   <link rel="stylesheet" href="css/base.css">  
+   <link rel="preload" as="image" href="images/intro.webp" type="image/webp" media="(min-width: 769px)">
+   <link rel="preload" as="image" href="images/intro-960.webp" type="image/webp" media="(max-width: 768px)">
+   <link rel="stylesheet" href="css/base.css">
    <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">     
-
-   <!-- script
-   ================================================== -->   
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
 
    <!-- favicons
 	================================================== -->
-	<link rel="icon" type="image/png" href="newlogo.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<script src="js/main.js" defer></script>
 
 </head>
 
 <body id="top">
 
-	<!-- header 
+	<a class="skip-link" href="#about">Skip to content</a>
+
+	<!-- header
    ================================================== -->
-   <header>   	
+   <header>
    	<div class="row">
 
    		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Menu</span></a>
-			   <!-- The top left has a logo-->		      
+   			<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation"><span></span></button>
+   			<button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+   				<i class="fa fa-moon-o" aria-hidden="true"></i>
+   				<i class="fa fa-sun-o" aria-hidden="true"></i>
+   			</button>
 
-		   	<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
-						<li><a class="smoothscroll"  href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll"  href="#services" title="">Strengths</a></li>
-						<li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>				
+		   	<nav id="main-nav-wrap" aria-label="Main">
+					<ul class="main-navigation" id="main-navigation">
+						<li class="current"><a href="#intro">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#resume">Resume</a></li>
+						<li><a href="#contact">Contact</a></li>
 					</ul>
-				</nav>    		
-   		</div> <!-- /top-bar --> 
-   		
-   	</div> <!-- /row --> 		
-   </header> 
+				</nav>
+   		</div> <!-- /top-bar -->
+
+   	</div> <!-- /row -->
+   </header>
+
+	<main>
 
 	<!-- intro section
    ================================================== -->
-   <section id="intro">   
+   <section id="intro">
 
-   	<div class="intro-overlay"></div>	
+   	<div class="intro-overlay"></div>
 
    	<div class="intro-content">
    		<div class="row">
 
    			<div class="col-twelve">
 
-	   			<h5 class="intro-eyebrow">Hello, World.</h5>
+	   			<p class="intro-eyebrow h05">Hello, World.</p>
 	   			<h1>I'm Alex Bahena</h1>
 
 	   			<div class="intro-position">
@@ -91,7 +129,7 @@
 	   				<span class="intro-pill">Chicago</span>
 	   			</div>
 
-	   			<a class="button stroke smoothscroll" href="#about" title="">About Me</a>
+	   			<a class="button stroke" href="#projects">See My Work</a>
 
 	   		</div>
 
@@ -99,40 +137,43 @@
    	</div> <!-- /intro-content -->
 
    	<ul class="intro-social">
-         <li><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-         <li><a href="https://github.com/Alexbahena07" target="_blank"><i class="fa fa-github"></i></a></li>
+         <li><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+         <li><a href="https://github.com/Alexbahena07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a></li>
       </ul> <!-- /intro-social -->
 
-      <a class="intro-scroll-cue smoothscroll" href="#about" title="Scroll to About" aria-label="Scroll to About">
-         <i class="fa fa-angle-down"></i>
+      <a class="intro-scroll-cue" href="#about" aria-label="Scroll to About">
+         <i class="fa fa-angle-down" aria-hidden="true"></i>
       </a>
 
    </section> <!-- /intro -->
 
 
    <!-- about section ================================================== -->
-<section id="about">  
+<section id="about">
 
     <div class="row section-intro">
         <div class="col-twelve">
 
-            <h5>About</h5>
-            <h1>Let me introduce myself.</h1>
+            <p class="h05">About</p>
+            <h2 class="h01">Let me introduce myself.</h2>
 
             <div class="intro-info">
-                <img src="images/Headshot2026.png" alt="Alex Bahena">
+                <picture>
+                    <source srcset="images/headshot.webp" type="image/webp">
+                    <img src="images/headshot.jpg" alt="Alex Bahena" width="320" height="480">
+                </picture>
                 <div class="intro-text">
                     <p class="lead">
-                        Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan. Experienced building scalable web applications using React, Next.js, TypeScript, Python, and SQL with strengths in REST API development, database design, and Git-based workflows.
+                        Full-Stack Software Engineer with a B.S. in Computer Science from the University of Michigan. I build production web applications with React, Next.js, TypeScript, and PostgreSQL, most recently as the sole engineer behind COLAB Clubhouse, a live career platform with paid tiers, real-time messaging, and AI features.
                     </p>
                     <div class="intro-badges">
-                        <span class="intro-badge"><i class="fa fa-graduation-cap"></i> B.S. Computer Science, University of Michigan</span>
-                        <span class="intro-badge"><i class="fa fa-map-marker"></i> Chicago, IL</span>
+                        <span class="intro-badge"><i class="fa fa-graduation-cap" aria-hidden="true"></i> B.S. Computer Science, University of Michigan</span>
+                        <span class="intro-badge"><i class="fa fa-map-marker" aria-hidden="true"></i> Chicago, IL</span>
                     </div>
                 </div>
             </div>
 
-        </div>   		
+        </div>
     </div> <!-- /section-intro -->
 
     <div class="row about-content">
@@ -144,28 +185,24 @@
 
             <ul class="info-list">
                 <li>
-                    <strong><i class="fa fa-user info-icon"></i>Fullname:</strong>
+                    <strong><i class="fa fa-user info-icon" aria-hidden="true"></i>Full Name:</strong>
                     <span>Alex Bahena</span>
                 </li>
                 <li>
-                    <strong><i class="fa fa-map-marker info-icon"></i>Location:</strong>
-                    <span>Alsip, Illinois</span>
+                    <strong><i class="fa fa-map-marker info-icon" aria-hidden="true"></i>Location:</strong>
+                    <span>Chicago, IL</span>
                 </li>
                 <li>
-                    <strong><i class="fa fa-envelope info-icon"></i>Email:</strong>
-                    <span>alex.bahena.cs@gmail.com</span>
+                    <strong><i class="fa fa-envelope info-icon" aria-hidden="true"></i>Email:</strong>
+                    <span><a href="mailto:alex.bahena.cs@gmail.com">alex.bahena.cs@gmail.com</a></span>
                 </li>
                 <li>
-                    <strong><i class="fa fa-globe info-icon"></i>Website:</strong>
-                    <span><a href="https://alexbahena07.github.io/Portfolio/" target="_blank">Portfolio</a></span>
+                    <strong><i class="fa fa-linkedin-square info-icon" aria-hidden="true"></i>LinkedIn:</strong>
+                    <span><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank" rel="noopener noreferrer">linkedin.com/in/alex-bahena-619010177</a></span>
                 </li>
                 <li>
-                    <strong><i class="fa fa-linkedin-square info-icon"></i>LinkedIn:</strong>
-                    <span><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank">linkedin.com/in/alex-bahena-619010177</a></span>
-                </li>
-                <li>
-                    <strong><i class="fa fa-github info-icon"></i>GitHub:</strong>
-                    <span><a href="https://github.com/Alexbahena07" target="_blank">github.com/Alexbahena07</a></span>
+                    <strong><i class="fa fa-github info-icon" aria-hidden="true"></i>GitHub:</strong>
+                    <span><a href="https://github.com/Alexbahena07" target="_blank" rel="noopener noreferrer">github.com/Alexbahena07</a></span>
                 </li>
             </ul> <!-- /info-list -->
 
@@ -177,94 +214,54 @@
 
             <div class="skill-groups">
                 <div class="skill-group">
-                    <h4><i class="fa fa-terminal"></i> Languages</h4>
+                    <h4><i class="fa fa-terminal" aria-hidden="true"></i> Languages</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
                         <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">C++</span>
                     </div>
                 </div>
                 <div class="skill-group">
-                    <h4><i class="fa fa-cubes"></i> Frameworks &amp; Libraries</h4>
+                    <h4><i class="fa fa-desktop" aria-hidden="true"></i> Frontend</h4>
                     <div class="skill-tags">
                         <span class="skill-tag">React</span>
                         <span class="skill-tag">Next.js (App Router)</span>
-                        <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">NextAuth.js</span>
-                        <span class="skill-tag">Zod</span>
-                        <span class="skill-tag">React Hook Form</span>
-                        <span class="skill-tag">SWR</span>
+                        <span class="skill-tag">HTML &amp; CSS</span>
+                        <span class="skill-tag">PWAs</span>
                     </div>
                 </div>
                 <div class="skill-group">
-                    <h4><i class="fa fa-database"></i> Databases</h4>
+                    <h4><i class="fa fa-database" aria-hidden="true"></i> Backend &amp; Data</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Neon (Serverless Postgres)</span>
-                        <span class="skill-tag">Prisma ORM</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4><i class="fa fa-globe"></i> Web</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">WebSockets / Real-Time (Pusher)</span>
-                        <span class="skill-tag">Web Push / PWAs</span>
-                        <span class="skill-tag">Webhooks</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Prisma</span>
+                        <span class="skill-tag">NextAuth.js</span>
+                        <span class="skill-tag">Flask</span>
                     </div>
                 </div>
                 <div class="skill-group">
-                    <h4><i class="fa fa-cloud"></i> Cloud &amp; DevOps</h4>
+                    <h4><i class="fa fa-cloud" aria-hidden="true"></i> Platform &amp; Integrations</h4>
                     <div class="skill-tags">
                         <span class="skill-tag">Vercel</span>
-                        <span class="skill-tag">Sentry</span>
-                        <span class="skill-tag">CI/CD</span>
                         <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4><i class="fa fa-plug"></i> APIs &amp; Integrations</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Anthropic Claude API</span>
                         <span class="skill-tag">Stripe</span>
-                        <span class="skill-tag">Resend</span>
+                        <span class="skill-tag">Pusher</span>
+                        <span class="skill-tag">Claude API</span>
+                        <span class="skill-tag">Sentry</span>
                     </div>
                 </div>
                 <div class="skill-group">
-                    <h4><i class="fa fa-flask"></i> Testing</h4>
+                    <h4><i class="fa fa-wrench" aria-hidden="true"></i> Testing &amp; Tooling</h4>
                     <div class="skill-tags">
                         <span class="skill-tag">Vitest</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4><i class="fa fa-wrench"></i> Tools</h4>
-                    <div class="skill-tags">
+                        <span class="skill-tag">GitHub Actions CI</span>
                         <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Google Cloud Console</span>
                         <span class="skill-tag">ESLint</span>
-                        <span class="skill-tag">VS Code</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4><i class="fa fa-lightbulb-o"></i> Concepts</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Full-Stack Development</span>
-                        <span class="skill-tag">Relational Database Design &amp; Migrations</span>
-                        <span class="skill-tag">Authentication &amp; Role-Based Access Control</span>
-                        <span class="skill-tag">Responsive / Mobile-First Design</span>
-                        <span class="skill-tag">Real-Time Systems</span>
-                        <span class="skill-tag">LLM Integration &amp; Prompt Engineering</span>
-                        <span class="skill-tag">Query &amp; Performance Optimization</span>
-                        <span class="skill-tag">Email Deliverability (SPF/DKIM/DMARC)</span>
-                        <span class="skill-tag">Web Security (CSP, Signed Tokens)</span>
-                        <span class="skill-tag">Dark Mode / Design Tokens</span>
-                        <span class="skill-tag">Analytics Dashboards &amp; Data Visualization (D3/visx)</span>
                     </div>
                 </div>
             </div> <!-- /skill-groups -->
@@ -275,24 +272,219 @@
 
     <div class="row button-section">
         <div class="col-twelve">
-            <a href="#contact" title="Hire Me" class="button stroke smoothscroll"><i class="fa fa-paper-plane"></i> Hire Me</a>
-            <a href="Alex_Bahena_Resume.pdf" title="Download Resume" class="button button-primary" target="_blank"><i class="fa fa-download"></i> Download Resume</a>
-        </div>   		
+            <a href="#contact" class="button stroke"><i class="fa fa-paper-plane" aria-hidden="true"></i> Hire Me</a>
+            <a href="Alex_Bahena_Resume.pdf" class="button button-primary" target="_blank" rel="noopener"><i class="fa fa-download" aria-hidden="true"></i> Download Resume</a>
+        </div>
     </div>
 
 </section> <!-- /about -->
 
 
-
-   <!-- resume Section ================================================== -->
-<section id="resume" class="grey-section">
+   <!-- projects Section ================================================== -->
+<section id="projects" class="grey-section">
 
     <div class="row section-intro">
         <div class="col-twelve">
-            <h5>Resume</h5>
-            <h1>More of my credentials.</h1>
-        </div>   		
-    </div> <!-- /section-intro--> 
+            <p class="h05">Projects</p>
+            <h2 class="h01">Things I've built.</h2>
+        </div>
+    </div> <!-- /section-intro -->
+
+    <div class="row projects-content">
+
+        <!-- COLAB Clubhouse (featured) -->
+        <article class="project project-featured">
+
+            <a class="project-media" href="https://www.colabconnects.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                <picture>
+                    <source media="(min-width: 901px)" srcset="images/projects/colab-tall.webp" type="image/webp">
+                    <source media="(min-width: 901px)" srcset="images/projects/colab-tall.jpg">
+                    <source srcset="images/projects/colab.webp" type="image/webp">
+                    <img src="images/projects/colab.jpg" alt="" width="960" height="600" loading="lazy" decoding="async">
+                </picture>
+            </a>
+
+            <div class="project-body">
+                <p class="project-eyebrow">Featured &middot; Founding &amp; sole engineer &middot; Oct 2025 – Present</p>
+                <h3>COLAB Clubhouse</h3>
+                <p>A production career platform connecting early-career finance talent with employers. I built it from scratch: member profiles and a ranked job feed, an employer hiring pipeline with screening and analytics, real-time messaging, paid subscription tiers, an installable mobile app, and eight AI features powered by the Claude API.</p>
+
+                <ul class="project-stats">
+                    <li><strong>134k</strong><span>lines of TypeScript</span></li>
+                    <li><strong>237</strong><span>API routes</span></li>
+                    <li><strong>90</strong><span>data models</span></li>
+                    <li><strong>100+</strong><span>test files</span></li>
+                </ul>
+
+                <ul class="project-highlights">
+                    <li>Employer hiring suite (applicant pipeline, team ratings, screener questions, interview scheduling, reports) gated across three Stripe tiers</li>
+                    <li>Eight Claude API features, including resume autofill, AI candidate search, and content moderation, with per-feature cost controls</li>
+                    <li>Real-time messaging and web push with Pusher; diagnosed and fixed a production realtime outage caused by CSP and environment config</li>
+                    <li>CI on GitHub Actions, an isolated dev database branch, and 143 versioned migrations</li>
+                </ul>
+
+                <div class="skill-tags project-tags">
+                    <span class="skill-tag">Next.js 16</span>
+                    <span class="skill-tag">React 19</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Prisma</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Tailwind CSS 4</span>
+                    <span class="skill-tag">Stripe</span>
+                    <span class="skill-tag">Pusher</span>
+                </div>
+
+                <div class="project-links">
+                    <a class="button button-primary" href="https://www.colabconnects.app/" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                    <span class="project-note"><i class="fa fa-lock" aria-hidden="true"></i> Private repo, code walkthrough on request</span>
+                </div>
+            </div> <!-- /project-body -->
+
+            <div class="project-deep">
+
+                <div class="lighthouse">
+                    <h4>Lighthouse <span>desktop &middot; Oct 2026</span></h4>
+                    <ul class="lighthouse-scores">
+                        <li><span class="lh-ring" style="--score: 99">99</span>Performance</li>
+                        <li><span class="lh-ring" style="--score: 96">96</span>Accessibility</li>
+                        <li><span class="lh-ring" style="--score: 100">100</span>Best Practices</li>
+                        <li><span class="lh-ring" style="--score: 92">92</span>SEO</li>
+                    </ul>
+                </div>
+
+                <figure class="arch">
+                    <figcaption><h4>How it's built <span class="arch-hint">Swipe to see the full diagram</span></h4></figcaption>
+                    <div class="arch-scroll">
+                        <svg viewBox="0 0 784 350" role="img" aria-labelledby="arch-title arch-desc">
+                            <title id="arch-title">COLAB Clubhouse architecture</title>
+                            <desc id="arch-desc">The browser or installed PWA talks to a Next.js 16 app on Vercel, which serves the React UI, 237 API routes and NextAuth role-based access. The app reads and writes PostgreSQL on Neon through Prisma, and integrates the Claude API, Stripe, Pusher, Resend and Sentry.</desc>
+
+                            <!-- client -> app -->
+                            <line class="arch-line" x1="160" y1="165" x2="220" y2="165"/>
+                            <!-- app -> services -->
+                            <line class="arch-line" x1="440" y1="40"  x2="500" y2="40"/>
+                            <line class="arch-line" x1="440" y1="95"  x2="500" y2="95"/>
+                            <line class="arch-line" x1="440" y1="150" x2="500" y2="150"/>
+                            <line class="arch-line" x1="440" y1="205" x2="500" y2="205"/>
+                            <line class="arch-line" x1="440" y1="260" x2="500" y2="260"/>
+                            <line class="arch-line" x1="440" y1="305" x2="500" y2="305"/>
+                            <!-- prisma -> postgres -->
+                            <line class="arch-line" x1="640" y1="40" x2="660" y2="40"/>
+                            <!-- pusher pushes back to the browser -->
+                            <path class="arch-line arch-dashed" d="M770 260 H780 V340 H85 V205"/>
+
+                            <rect class="arch-box" x="10" y="125" width="150" height="80" rx="10"/>
+                            <text class="arch-title" x="85" y="160" text-anchor="middle">Browser</text>
+                            <text class="arch-sub" x="85" y="180" text-anchor="middle">installable PWA</text>
+
+                            <rect class="arch-box arch-core" x="220" y="15" width="220" height="290" rx="12"/>
+                            <text class="arch-title" x="330" y="45" text-anchor="middle">Next.js 16 on Vercel</text>
+                            <rect class="arch-pill" x="240" y="75"  width="180" height="44" rx="8"/>
+                            <text class="arch-sub arch-strong" x="330" y="102" text-anchor="middle">React 19 UI · 80 pages</text>
+                            <rect class="arch-pill" x="240" y="135" width="180" height="44" rx="8"/>
+                            <text class="arch-sub arch-strong" x="330" y="162" text-anchor="middle">237 API routes</text>
+                            <rect class="arch-pill" x="240" y="195" width="180" height="44" rx="8"/>
+                            <text class="arch-sub arch-strong" x="330" y="222" text-anchor="middle">NextAuth · role-based access</text>
+                            <text class="arch-sub" x="330" y="280" text-anchor="middle">GitHub Actions CI · Vitest</text>
+
+                            <rect class="arch-box" x="500" y="20" width="140" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="570" y="45" text-anchor="middle">Prisma ORM</text>
+                            <rect class="arch-box" x="660" y="20" width="110" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="715" y="45" text-anchor="middle">Postgres · Neon</text>
+
+                            <rect class="arch-box" x="500" y="75" width="270" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="515" y="100">Claude API</text>
+                            <text class="arch-sub" x="755" y="100" text-anchor="end">8 AI features</text>
+
+                            <rect class="arch-box" x="500" y="130" width="270" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="515" y="155">Stripe</text>
+                            <text class="arch-sub" x="755" y="155" text-anchor="end">3 paid tiers · webhooks</text>
+
+                            <rect class="arch-box" x="500" y="185" width="270" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="515" y="210">Resend</text>
+                            <text class="arch-sub" x="755" y="210" text-anchor="end">transactional email</text>
+
+                            <rect class="arch-box" x="500" y="240" width="270" height="40" rx="8"/>
+                            <text class="arch-title arch-sm" x="515" y="265">Pusher</text>
+                            <text class="arch-sub" x="755" y="265" text-anchor="end">messaging · web push</text>
+
+                            <rect class="arch-box" x="500" y="290" width="270" height="30" rx="8"/>
+                            <text class="arch-title arch-sm" x="515" y="310">Sentry</text>
+                            <text class="arch-sub" x="755" y="310" text-anchor="end">error monitoring</text>
+                        </svg>
+                    </div>
+                </figure>
+
+            </div> <!-- /project-deep -->
+
+        </article>
+
+        <div class="project-grid">
+
+            <!-- Cruz Installations -->
+            <article class="project">
+                <a class="project-media" href="https://cruzinstallations.com/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                    <picture>
+                        <source srcset="images/projects/cruz.webp" type="image/webp">
+                        <img src="images/projects/cruz.jpg" alt="" width="960" height="600" loading="lazy" decoding="async">
+                    </picture>
+                </a>
+                <div class="project-body">
+                    <p class="project-eyebrow">Client website</p>
+                    <h3>Cruz Installations &amp; Remodeling</h3>
+                    <p>Marketing site for a family-owned flooring and remodeling company serving Chicagoland and southern Wisconsin. Hand-written HTML and CSS with no framework or build step, a vanilla-JS project photo carousel and mobile nav, and a custom domain on GitHub Pages.</p>
+                    <div class="skill-tags project-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">GitHub Pages</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://cruzinstallations.com/" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                        <a href="https://github.com/Alexbahena07/CruzInstallations" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i> Code</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Instagram Clone -->
+            <article class="project">
+                <div class="project-media project-media-placeholder" aria-hidden="true">
+                    <i class="fa fa-camera"></i>
+                    <span>Flask &middot; React &middot; REST</span>
+                </div>
+                <div class="project-body">
+                    <p class="project-eyebrow">Full-stack app</p>
+                    <h3>Instagram Clone</h3>
+                    <p>A full-stack photo-sharing app: a Flask REST API with SQLite on the backend and a React single-page feed on the front. Includes an infinite-scroll feed, likes and comments, a follow system, an explore page, and salted SHA-512 password hashing with session and HTTP Basic auth.</p>
+                    <div class="skill-tags project-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">REST API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Alexbahena07/InstagramClone" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i> Code</a>
+                    </div>
+                </div>
+            </article>
+
+        </div> <!-- /project-grid -->
+
+    </div> <!-- /projects-content -->
+
+</section> <!-- /projects -->
+
+
+   <!-- resume Section ================================================== -->
+<section id="resume">
+
+    <div class="row section-intro">
+        <div class="col-twelve">
+            <p class="h05">Resume</p>
+            <h2 class="h01">More of my credentials.</h2>
+        </div>
+    </div> <!-- /section-intro-->
 
     <!-- Experience Timeline -->
     <div class="row resume-timeline">
@@ -303,57 +495,53 @@
 
         <div class="col-twelve">
             <div class="timeline-wrap">
-				<!-- COLAB Connects -->
-					<div class="timeline-block">
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
 
-						<div class="timeline-header">
-							<h3>COLAB Connects, Full-Stack Software Engineer</h3>
-							<p>August 2025 - Present</p>
-						</div>
-
-						<div class="timeline-content">
-							<p>Developed a full-stack talent-matching platform using React, Next.js, and TypeScript supporting recruiter dashboards and candidate profiles. Implemented RESTful APIs and PostgreSQL database design to enable scalable backend services and secure data retrieval. Built authentication and role-based access control using NextAuth; managed version control using Git and GitHub.</p>
-						</div>
-					</div>
-                
+                <!-- COLAB Connects -->
+                <div class="timeline-block">
+                    <div class="timeline-ico">
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                    </div>
+                    <div class="timeline-header">
+                        <h3>COLAB Connects, Full-Stack Software Engineer</h3>
+                        <p>August 2025 - Present</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Sole engineer behind <a href="#projects">COLAB Clubhouse</a>, a production career platform connecting early-career finance talent with employers. Built it end to end in Next.js, React, and TypeScript: candidate profiles, an employer hiring pipeline, real-time messaging, Stripe subscriptions, and Claude-powered AI features, on PostgreSQL via Prisma with NextAuth role-based access control.</p>
+                    </div>
+                </div>
 
                 <!-- Digital Studies Institute -->
-					<div class="timeline-block">
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Digital Studies Institute, Website Editor</h3>
-							<p>September 2023 - June 2025</p>
-						</div>
-
-						<div class="timeline-content">
-							<p>Collaborated with a cross-functional team to update the Digital Studies Institute's website, employing CMS tools to ensure content accuracy and improve user experience, boosting usability by 15%. Created and published an average of 3 weekly posts using AEM, increasing website traffic and engagement by 20% through data-driven content strategies.</p>
-						</div>
-					</div>
+                <div class="timeline-block">
+                    <div class="timeline-ico">
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                    </div>
+                    <div class="timeline-header">
+                        <h3>Digital Studies Institute, Website Editor</h3>
+                        <p>September 2023 - June 2025</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Collaborated with a cross-functional team to update the Digital Studies Institute's website, employing CMS tools to ensure content accuracy and improve user experience, boosting usability by 15%. Created and published an average of 3 weekly posts using AEM, increasing website traffic and engagement by 20% through data-driven content strategies.</p>
+                    </div>
+                </div>
 
                 <!-- Simba Technology -->
                 <div class="timeline-block">
                     <div class="timeline-ico">
-                        <i class="fa fa-briefcase"></i>
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
                     </div>
                     <div class="timeline-header">
                         <h3>Simba Technology, Software Developer Intern</h3>
                         <p>June 2024 - August 2024</p>
                     </div>
                     <div class="timeline-content">
-                        <p>Conducted competitive analysis using Google Analytics to identify market trends and user behavior patterns, producing presentations to guide the design of client website applications. Designed and developed a personal HTML portfolio using GitHub and custom CSS, showcasing technical skills in web development. Presented the portfolio to clients, clarifying project goals and improving presentation outcomes.</p>
-					</div>
+                        <p>Conducted competitive analysis using Google Analytics to identify market trends and user behavior patterns, producing presentations that guided the design of client web applications. Built HTML and CSS site prototypes and presented them to clients to clarify project goals and requirements.</p>
+                    </div>
                 </div>
 
                 <!-- MAPSCorps -->
                 <div class="timeline-block">
                     <div class="timeline-ico">
-                        <i class="fa fa-briefcase"></i>
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
                     </div>
                     <div class="timeline-header">
                         <h3>MAPSCorps, Data Scientist Intern</h3>
@@ -361,10 +549,10 @@
                     </div>
                     <div class="timeline-content">
                         <p>Cleaned and analyzed large datasets using Excel, generating actionable insights that informed decision-making processes and supported resource allocation for marginalized communities. Collaborated with a multidisciplinary team to create data visualizations and reports, simplifying complex findings to support community planning and resource distribution.</p>
-					</div>
+                    </div>
                 </div>
 
-            </div> <!-- /timeline-wrap -->   			
+            </div> <!-- /timeline-wrap -->
         </div> <!-- /col-twelve -->
     </div> <!-- /resume-timeline -->
 
@@ -380,7 +568,7 @@
                 <!-- University of Michigan -->
                 <div class="timeline-block">
                     <div class="timeline-ico">
-                        <i class="fa fa-graduation-cap"></i>
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     </div>
                     <div class="timeline-header">
                         <h3>University of Michigan, B.S. Computer Science</h3>
@@ -394,7 +582,7 @@
                 <!-- Michigan Hackers -->
                 <div class="timeline-block">
                     <div class="timeline-ico">
-                        <i class="fa fa-graduation-cap"></i>
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     </div>
                     <div class="timeline-header">
                         <h3>Michigan Hackers</h3>
@@ -405,146 +593,13 @@
                     </div>
                 </div>
 
-                <!-- The Academy Group -->
-                <div class="timeline-block">
-                    <div class="timeline-ico">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-header">
-                        <h3>The Academy Group</h3>
-                        <p>July 2018 - Present</p>
-                    </div>
-                    <div class="timeline-content">
-                        <p>Immersive career training and extensive entrepreneurial development in a top academic program for accelerated growth for success in college and beyond. Guidance and mentorship from experienced team members.</p>
-                    </div>
-                </div>
-
-                <!-- Greenwood Project -->
-                <div class="timeline-block">
-                    <div class="timeline-ico">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-header">
-                        <h3>Greenwood Project</h3>
-                        <p>July 2020 - August 2020</p>
-                    </div>
-                    <div class="timeline-content">
-                        <p>Developed an interactive banking simulation in Python that allows users to view account details, make purchases, and receive dynamic receipts.</p>
-                    </div>
-                </div>
-
-            </div> <!-- /timeline-wrap -->   			
-        </div> <!-- /col-twelve -->
-    </div> <!-- /resume-timeline -->
-
-    <!-- Projects Timeline -->
-    <div class="row resume-timeline">
-        <div class="col-twelve resume-header">
-            <h2>Projects</h2>
-        </div> <!-- /resume-header -->
-
-        <div class="col-twelve">
-            <div class="timeline-wrap">
-
-                <!-- COLAB Connects -->
-                <div class="timeline-block">
-                    <div class="timeline-ico">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <div class="timeline-header">
-                        <h3>COLAB Clubhouse — Career Platform</h3>
-                        <p>Founding &amp; Sole Engineer · Oct 2025 - Present</p>
-                        <p>
-                            <a href="https://github.com/Alexbahena07/COLAB_Connects" target="_blank"><i class="fa fa-github"></i> GitHub</a>
-                            &nbsp;|&nbsp;
-                            <a href="https://www.colabconnects.app/" target="_blank"><i class="fa fa-external-link"></i> Live Site</a>
-                        </p>
-                    </div>
-                    <div class="timeline-content">
-                        <p>A production career platform connecting early-career finance talent with employers. As the sole engineer, I built it from scratch: member profiles and a ranked job feed, an employer hiring pipeline with screening and analytics, real-time messaging, paid subscription tiers, an installable mobile app, and eight AI features powered by the Claude API.</p>
-                        <ul>
-                            <li>~134k lines of TypeScript across 80 pages, 237 API routes and 90 data models</li>
-                            <li>Employer hiring suite (applicant pipeline, team ratings, screener questions, interview scheduling, hiring reports) gated across three paid tiers with Stripe</li>
-                            <li>Eight Claude API features, including resume autofill, AI candidate search and content moderation, with per-feature cost controls and usage tracking</li>
-                            <li>Real-time messaging and web push with Pusher; diagnosed and fixed a production realtime outage caused by CSP and environment config</li>
-                            <li>Installable PWA with app-style navigation, offline support and badge counts</li>
-                            <li>CI with GitHub Actions, 100+ Vitest test files, an isolated dev database branch and 143 versioned migrations</li>
-                        </ul>
-                        <p><strong>Stack:</strong> Next.js 16, React 19, TypeScript, Prisma, PostgreSQL (Neon), Tailwind CSS 4, Vercel, Stripe, Resend, Pusher, Sentry</p>
-                    </div>
-                </div>
-
-			</div> <!-- /timeline-wrap -->
+            </div> <!-- /timeline-wrap -->
         </div> <!-- /col-twelve -->
     </div> <!-- /resume-timeline -->
 
 </section> <!-- /resume -->
 
-	<!-- services Section ================================================== -->
-<section id="services">
 
-    <div class="overlay"></div>
-
-    <div class="row section-intro">
-        <div class="col-twelve">
-            <h5>Strengths</h5>
-            <h1>What I Bring to a Team.</h1>
-            <p class="lead">Core strengths I apply across full-stack projects and teams.</p>
-        </div>   		
-    </div> <!-- /section-intro -->
-
-    <div class="row services-content">
-
-        <div id="owl-slider" class="owl-carousel services-list">
-
-            <div class="service">	
-                <span class="icon"><i class="icon-code"></i></span>            
-                <div class="service-content">	
-                    <h3>Full-Stack Development</h3>
-                    <p class="desc">Design and implement scalable full-stack applications using HTML, CSS, JavaScript, React, and SQL. Emphasize maintainable code and clean architecture while integrating RESTful APIs and cloud-based solutions like AWS.</p>
-                </div> 	         	 
-            </div>
-
-            <div class="service">	
-                <span class="icon"><i class="icon-layers"></i></span>                          
-                <div class="service-content">	
-                    <h3>Web Systems & CMS</h3>  
-                    <p class="desc">Experienced in using CMS platforms like AEM to manage large-scale websites, ensuring seamless updates, high usability, and improved accessibility. Contributed to measurable growth in engagement via optimized publishing strategies.</p>
-                </div>	                          
-            </div>
-
-            <div class="service">
-                <span class="icon"><i class="icon-graph"></i></span>		            
-                <div class="service-content">
-                    <h3>Data Analysis & Visualization</h3>
-                    <p class="desc">Proficient in Excel and Python for data cleaning and insight generation. Build actionable reports and dashboards to support decision-making using clean visualizations, especially for community and social impact contexts.</p>
-                </div> 	            	               
-            </div>
-
-            <div class="service">
-                <span class="icon"><i class="icon-laptop"></i></span>	              
-                <div class="service-content">
-                    <h3>Software Engineering</h3>
-                    <p class="desc">Apply principles from academic and project experience to build robust, testable, and secure software systems. Projects include a scalable web search engine and an Instagram-style SPA with React and REST APIs.</p>
-                </div>                
-            </div>
-
-            <div class="service">
-                <span class="icon"><i class="icon-lightbulb"></i></span>	              
-                <div class="service-content">
-                    <h3>Technical Problem Solving</h3>
-                    <p class="desc">Strong grasp of computer science fundamentals from coursework in algorithms, system architecture, and security. Capable of rapidly learning and applying new technologies to solve complex software issues efficiently.</p>
-                </div>                
-            </div>
-
-        </div> <!-- /services-list -->
-
-    </div> <!-- /services-content -->
-
-</section> <!-- /services -->
-
-
-	
    <!-- contact
    ================================================== -->
 	<section id="contact">
@@ -552,12 +607,12 @@
 		<div class="row section-intro">
    		<div class="col-twelve">
 
-   			<h5>Contact</h5>
-   			<h1>I'd Love To Hear From You.</h1>
+   			<p class="h05">Contact</p>
+   			<h2 class="h01">I'd Love To Hear From You.</h2>
 
-   			<p class="lead">I'll make sure to respond in a timely matter.</p>
+   			<p class="lead">I'll make sure to respond in a timely manner.</p>
 
-   		</div> 
+   		</div>
    	</div> <!-- /section-intro -->
 
    	<div class="row contact-form">
@@ -603,58 +658,49 @@
       		</div>
 
          </div> <!-- /col-twelve -->
-   		
+
    	</div> <!-- /contact-form -->
 
-    <!-- /contact-info -->
-   	<div class="row contact-info" style="display: flex; justify-content: center; text-align: center;">
+   	<div class="row contact-info">
 
-   		<div class="col-four tab-full collapse">
+   		<div class="col-twelve">
 
    			<div class="icon">
-   				<i class="icon-mail"></i>
+   				<i class="fa fa-envelope-o" aria-hidden="true"></i>
    			</div>
 
-   			<h5>Email Me At</h5>
+   			<h3 class="h05">Email Me At</h3>
 
-   			<p>alex.bahena.cs@gmail.com<br>			     
-			   </p>
+   			<p><a href="mailto:alex.bahena.cs@gmail.com">alex.bahena.cs@gmail.com</a></p>
 
    		</div>
 
-   		
    	</div> <!-- /contact-info -->
-		
+
 	</section> <!-- /contact -->
+
+	</main>
 
 
    <!-- footer
    ================================================== -->
 
    <footer>
-     	<div class="row" style="display: flex; justify-content: center; text-align: center;">
+     	<div class="row">
 
-     		<div class="col-six tab-full pull-right social" style="display: flex; justify-content: center; align-items: center;">
+     		<div class="col-twelve">
 
-     			<ul class="footer-social">        
-					<li><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-					<li><a href="https://github.com/Alexbahena07" target="_blank"><i class="fa fa-github"></i></a></li>
-			   </ul> 
-	      		
+     			<ul class="footer-social">
+					<li><a href="https://www.linkedin.com/in/alex-bahena-619010177/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+					<li><a href="https://github.com/Alexbahena07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+			   </ul>
+
+			   <p class="copyright">&copy; <span id="year">2026</span> Alex Bahena</p>
+
 	      </div>
 
-      	</div> <!-- /row -->     	
-   </footer>  
-
-   <div id="preloader"> 
-    	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== --> 
-   <script src="js/jquery-2.1.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
+      	</div> <!-- /row -->
+   </footer>
 
 </body>
 
