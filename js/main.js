@@ -216,53 +216,89 @@
 	/*	contact form
 	------------------------------------------------------ */
 
-	/* local validation */
-	$('#contactForm').validate({
+	/* Native validation + fetch() to FormSubmit's AJAX endpoint.
+	   The form's action attribute stays as a no-JS fallback. */
+	var contactForm = document.getElementById('contactForm');
 
-		/* submit via ajax */
-		submitHandler: function(form) {
+	if (contactForm && window.fetch) {
 
-			var sLoader = $('#submit-loader');
+		var submitBtn = contactForm.querySelector('button[type="submit"]'),
+			 sLoader   = $('#submit-loader'),
+			 sWarning  = $('#message-warning'),
+			 sSuccess  = $('#message-success'),
+			 ajaxUrl   = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
-			$.ajax({      	
+		function showError(text) {
+			// textContent, never innerHTML, so server/user text can't inject markup
+			sWarning.text(text).fadeIn();
+		}
 
-		      type: "POST",
-		      url: "inc/sendEmail.php",
-		      data: $(form).serialize(),
-		      beforeSend: function() { 
+		contactForm.addEventListener('submit', async function(e) {
 
-		      	sLoader.fadeIn(); 
+			e.preventDefault();
+			sWarning.hide();
 
-		      },
-		      success: function(msg) {
+			if (!contactForm.checkValidity()) {
+				contactForm.reportValidity();
+				return;
+			}
 
-	            // Message was sent
-	            if (msg == 'OK') {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').hide();
-	               $('#contactForm').fadeOut();
-	               $('#message-success').fadeIn();   
-	            }
-	            // There was an error
-	            else {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').html(msg);
-		            $('#message-warning').fadeIn();
-	            }
+			var data = Object.fromEntries(new FormData(contactForm));
 
-		      },
-		      error: function() {
+			// honeypot filled in = bot; pretend success and drop it
+			if (data._honey) {
+				$(contactForm).fadeOut();
+				sSuccess.fadeIn();
+				return;
+			}
 
-		      	sLoader.fadeOut(); 
-		      	$('#message-warning').html("Something went wrong. Please try again.");
-		         $('#message-warning').fadeIn();
+			data._subject = 'Portfolio contact: ' + data.subject;
+			data._replyto = data.email;
 
-		      }
+			submitBtn.disabled = true;
+			sLoader.fadeIn();
 
-	      });     		
-  		}
+			var controller = new AbortController(),
+				 timeout    = setTimeout(function() { controller.abort(); }, 15000);
 
-	});
+			try {
+				var res = await fetch(ajaxUrl, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json'
+					},
+					body: JSON.stringify(data),
+					signal: controller.signal
+				});
+
+				var json = await res.json().catch(function() { return {}; });
+
+				// FormSubmit returns success as the string "true"
+				if (!res.ok || String(json.success) !== 'true') {
+					throw new Error(json.message || 'Request failed (' + res.status + ')');
+				}
+
+				contactForm.reset();
+				$(contactForm).fadeOut(function() {
+					sSuccess.fadeIn(function() { sSuccess.trigger('focus'); });
+				});
+
+			} catch (err) {
+				console.error('Contact form error:', err);
+				showError(err.name === 'AbortError'
+					? 'The request timed out. Please try again.'
+					: 'Something went wrong sending your message. Please try again, or email me directly at alex.bahena.cs@gmail.com.');
+
+			} finally {
+				clearTimeout(timeout);
+				sLoader.fadeOut();
+				submitBtn.disabled = false;
+			}
+
+		});
+
+	}
 
 
  	/*----------------------------------------------------- */

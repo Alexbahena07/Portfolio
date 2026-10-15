@@ -2598,6 +2598,22 @@ header .logo a {
 #contact button.submitform:hover, #contact button.submitform:focus {
 	background: #faebd7;
 }
+#contact button.submitform:disabled {
+	opacity: .6;
+	cursor: wait;
+}
+/* visually hidden but available to screen readers */
+.sr-only {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
 #message-warning, #message-success {
 	display: none;
 	background: #0d0d0d;
